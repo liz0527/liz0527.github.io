@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/23/数据库系统概论（三）关系数据库标准语言SQL/1561116735229.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/23/数据库系统概论（三）关系数据库标准语言SQL/1561118917258.png">
-<meta property="og:updated_time" content="2019-06-23T08:28:55.449Z">
+<meta property="og:updated_time" content="2019-06-23T12:03:22.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库系统概论（三）关系数据库标准语言SQL">
 <meta name="twitter:description" content="第3章  关系数据库标准语言SQL3.1  SQL概述SQL (Structured Query Language)，结构化查询语言，是关系数据库的标准语言。 3.1.2  SQL特点 综合统一 SQL集数据定义语言 DDL，数据查询语言DQL，数据操纵语言DML，数据控制语言DCL功能于一体。  高度非过程化 只提出“做什么”，无需指明“怎么做”，不需要了解存取路径。  面向集合的操作方式 操作">
@@ -565,7 +565,7 @@
 </li>
 <li><p>查询满足条件的元组</p>
 <p>常用的查询条件</p>
-<p>|       查询条件       |                    谓词                    |<br>| —————— | —————————————- |<br>|         比较         | =,&gt;,&lt;,&gt;=,&lt;=,!=,&lt;&gt;,!&gt;,!&lt;,NOT+上述比较运算符 |<br>|       确定范围       |        BETWEEN AND, NOT BETWEEN AND        |<br>|       确定集合       |                 IN, NOT IN                 |<br>|       字符匹配       |               LIKE, NOT LIKE               |<br>|         空值         |            IS NULL, IS NOT NULL            |<br>| 多重条件（逻辑运算） |                AND, OR, NOT                |</p>
+<p>|       查询条件       |                    谓词                    |<br>|:—:|:—:|<br>|         比较         | =,&gt;,&lt;,&gt;=,&lt;=,!=,&lt;&gt;,!&gt;,!&lt;,NOT+上述比较运算符 |<br>|       确定范围       |        BETWEEN AND, NOT BETWEEN AND        |<br>|       确定集合       |                 IN, NOT IN                 |<br>|       字符匹配       |               LIKE, NOT LIKE               |<br>|         空值         |            IS NULL, IS NOT NULL            |<br>| 多重条件（逻辑运算） |                AND, OR, NOT                |</p>
 <p>【例】查询所有年龄在20岁以下的学生姓名及年龄 </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname,Sage <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage &lt; <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
 <p>【例】查询年龄不在20~23岁之间的学生姓名、系别和年龄 </p>
@@ -596,7 +596,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sdept,Sage <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>聚集函数</p>
-<p>|           聚集函数           |                功能                |<br>| ————————– | ——————————– |<br>|           COUNT(*)           |            统计元祖个数            |<br>| COUNT([DISTINCT|ALL]&lt;列名&gt;) |         统计一列中值的个数         |<br>|  SUM([DISTINCT|ALL]&lt;列名&gt;)  |  计算一列值的总和（必须是数值型）  |<br>|  AVG([DISTINCT|ALL]&lt;列名&gt;)  | 计算一列值的平均值（必须是数值型） |<br>|  MAX([DISTINCT|ALL]&lt;列名&gt;)  |         求一列值中的最大值         |<br>|  MIN([DISTINCT|ALL]&lt;列名&gt;)  |         求一列值中的最小值         |</p>
+<p>|           聚集函数           |                功能                |<br>|:—:|:—:|<br>|           COUNT(*)           |            统计元祖个数            |<br>| COUNT([DISTINCT|ALL]&lt;列名&gt;) |         统计一列中值的个数         |<br>|  SUM([DISTINCT|ALL]&lt;列名&gt;)  |  计算一列值的总和（必须是数值型）  |<br>|  AVG([DISTINCT|ALL]&lt;列名&gt;)  | 计算一列值的平均值（必须是数值型） |<br>|  MAX([DISTINCT|ALL]&lt;列名&gt;)  |         求一列值中的最大值         |<br>|  MIN([DISTINCT|ALL]&lt;列名&gt;)  |         求一列值中的最小值         |</p>
 <p>【例】查询选修了课程的学生人数 </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> Sno) <span class="keyword">FROM</span> SC;</span><br></pre></td></tr></table></figure>
 <p>【例】查询学生200215012选修课程的总学分数 </p>
@@ -661,7 +661,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno, Cno <span class="keyword">FROM</span> SC x <span class="keyword">WHERE</span> Grade &gt;= (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Grade) <span class="keyword">FROM</span> SC y <span class="keyword">WHERE</span> y.Sno=x.Sno);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>带有ANY(SOME)或ALL谓词的子查询</p>
-<p>|  运算符  |             含义             |<br>| ——| ————————– |<br>|   &gt;ANY   |   大于子查询结果中的某个值   |<br>|   &gt;ALL   |   大于子查询结果中的所有值   |<br>|   &lt;ANY   |   小于子查询结果中的某个值   |<br>|   <all | 小于子查询结果中的所有值>=ANY   | 大于等于子查询结果中的某个值 |<br>|  &gt;=ALL   | 大于等于子查询结果中的所有值 |<br>|  &lt;=ANY   | 小于等于子查询结果中的某个值 |<br>|  &lt;=ALL   | 小于等于子查询结果中的所有值 |<br>|   =ANY   |   等于子查询结果中的某个值   |<br>|   =ALL   |   等于子查询结果中的所有值   |<br>| !=/&lt;&gt;ANY |  不等于子查询结果中的某个值  |<br>| !=/&lt;&gt;ALL |  不等于子查询结果中的所有值  |</all></p>
+<p>|  运算符  |             含义             |<br>|:—:|:—:|<br>|   &gt;ANY   |   大于子查询结果中的某个值   |<br>|   &gt;ALL   |   大于子查询结果中的所有值   |<br>|   &lt;ANY   |   小于子查询结果中的某个值   |<br>|   <all | 小于子查询结果中的所有值>=ANY   | 大于等于子查询结果中的某个值 |<br>|  &gt;=ALL   | 大于等于子查询结果中的所有值 |<br>|  &lt;=ANY   | 小于等于子查询结果中的某个值 |<br>|  &lt;=ALL   | 小于等于子查询结果中的所有值 |<br>|   =ANY   |   等于子查询结果中的某个值   |<br>|   =ALL   |   等于子查询结果中的所有值   |<br>| !=/&lt;&gt;ANY |  不等于子查询结果中的某个值  |<br>| !=/&lt;&gt;ALL |  不等于子查询结果中的所有值  |</all></p>
 <p>【例】查询非计算机系中比计算机系任意一个学生年龄小的学生姓名和年龄</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SNAME,SAGE</span><br><span class="line"><span class="keyword">FROM</span> STUDENT</span><br><span class="line"><span class="keyword">WHERE</span> SAGE&lt;<span class="keyword">ANY</span>(<span class="keyword">SELECT</span> SAGE <span class="keyword">FROM</span> STUDENT <span class="keyword">WHERE</span> SDEPT=<span class="string">'CS'</span>)</span><br><span class="line"><span class="keyword">AND</span> SDEPT &lt;&gt; <span class="string">'CS'</span>;</span><br></pre></td></tr></table></figure>
 <p>【例】查询其他系中比计算机科学系所有学生年龄都小的学生姓名及年龄</p>
